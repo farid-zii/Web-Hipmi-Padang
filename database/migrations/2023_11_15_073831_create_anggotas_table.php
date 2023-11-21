@@ -26,11 +26,10 @@ return new class extends Migration
             $table->string('tempatLahir');
             $table->date('tanggalLahir');
             $table->text('motto');
-            $table->text('instagram');
-            $table->text('twitter');
-            $table->text('facebook');
-            $table->text('linkedin');
-            // $table->string('');
+            $table->text('instagram')->nullable();
+            $table->text('twitter')->nullable();
+            $table->text('facebook')->nullable();
+            $table->text('linkedin')->nullable();
             $table->timestamps();
         });
     }

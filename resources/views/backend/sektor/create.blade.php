@@ -34,7 +34,7 @@
                 </div> --}}
                 <div class="pb-20 p-4">
                     {{-- <a href="/dashboard/jabatan" class="btn btn-dark btn-sm"> Kembali</a> --}}
-                    <form action="/dashboard/sektor" method="post">
+                    <form action="/dashboard/sektor" method="post" enctype="multipart/form-data">
                         @method('post')
                         @csrf
                         {{-- <div class="form-group row">
@@ -47,10 +47,27 @@
                             <label>Nama Sektor</label>
                             <input class="form-control @error('namaSektor')
                                 form-control-danger
-                            @enderror" type="text" name="namaSektor" value="{{old('namaSektor')}}" placeholder="Kesehatan">
+                            @enderror" type="text" name="namaSektor" value="{{old('namaSektor')}}" placeholder="Kesehatan" required>
                             @error('namaSektor')
                                 <div class="form-control-feedback text-danger">{{$message}}</div>
                             @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Gambar Sektor</label>
+                            <input class="form-control @error('gambarSektor')
+                                form-control-danger
+                            @enderror" type="file" name="gambarSektor" accept="" value="{{old('gambarSektor')}}" placeholder="Kesehatan" required>
+                            @error('gambarSektor')
+                                <div class="form-control-feedback text-danger">{{$message}}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Deskripsi</label>
+                            @error('deskripsiSektor')
+                                <div class="form-control-feedback text-danger">{{$message}}</div>
+                            @enderror
+                            <input class="form-contro" type="hidden" id="deskripsi" name="deskripsiSektor" value="" placeholder="Kesehatan">
+                            <trix-editor input="deskripsi"></trix-editor>
                         </div>
 
                         <div class="d-flex justify-content-end">

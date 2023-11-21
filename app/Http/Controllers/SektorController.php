@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sektor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class SektorController extends Controller
 {
@@ -26,7 +27,7 @@ class SektorController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.sektor.create');
     }
 
     /**
@@ -37,11 +38,19 @@ class SektorController extends Controller
      */
     public function store(Request $request)
     {
+        $namaFoto = time().'-'.$request->gambarSektor->getClientOriginalName();
+        $request->gambarSektor->move(public_path('backend/images/sektor/'),$namaFoto);
+
+
         $validate= $request->validate([
-            'namaSektor'=>'required|unique:Sektors'
+            'namaSektor'=>'required|unique:Sektors',
+            // 'gambarSektor'=>'required',
+            'deskripsiSektor'=>'required'
         ],[
             'unique'=>'Data Sektor Ini Sudah Ada'
         ]);
+        $validate['gambarSektor']=$namaFoto;
+
 
         Sektor::create($validate);
 
@@ -67,7 +76,7 @@ class SektorController extends Controller
      */
     public function edit($id)
     {
-        return view('backend.sektor.index',[
+        return view('backend.sektor.edit',[
             'data'=>Sektor::find($id)
         ]);
     }
@@ -81,11 +90,33 @@ class SektorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validate= $request->validate([
-            'namaSektor'=>'required|unique:Sektors'
-        ],[
-            'unique'=>'Data Sektor Ini Sudah Ada'
-        ]);
+
+        if($request->gambarSektor){
+
+            $sektorLama = Sektor::find($id);
+            File::delete('backend/images/sektor/'.$sektorLama->gambarSektor);
+
+            $namaFoto = time().'-'.$request->gambarSektor->getClientOriginalName();
+            $request->gambarSektor->move(public_path('backend/images/sektor/'),$namaFoto);
+
+            $validate= $request->validate([
+                'namaSektor'=>['required','unique:sektors,namaSektor,'.$id.'id'],
+                // 'namaSektor'=>'unique:table,column,except,id'
+                'deskripsiSektor'=>'required'
+            ],
+            [
+                'unique'=>'Data Sektor Ini Sudah Ada'
+            ]);
+            $validate['gambarSektor']=$namaFoto;
+        }
+        else{
+            $validate= $request->validate([
+                'namaSektor'=>['required','unique:sektors,namaSektor,'.$id.'id'],
+                'deskripsiSektor'=>'required'
+            ],[
+                'unique'=>'Data Sektor Ini Sudah Ada'
+            ]);
+        }
 
         Sektor::find($id)->update($validate);
 
@@ -100,6 +131,8 @@ class SektorController extends Controller
      */
     public function destroy($id)
     {
+        $sektor = Sektor::find($id);
+        File::delete('backend/images/sektor/'.$sektor->gambarSektor);
         Sektor::destroy($id);
 
         return back()->with('success','Data Sektor Berhasil Di Hapus');

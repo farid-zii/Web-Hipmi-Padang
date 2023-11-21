@@ -8,13 +8,24 @@
         <div class="min-height-200px">
             <div class="page-header">
                 <div class="row">
-                    <div class="col-md-12 col-sm-12 row mb-4">
-                        <div class="col-md-4">
-                            <img src="{{asset('backend/src/images/logo/logo-hipmi.png')}}" alt="sda">
-                        </div>
-                        <div class="col-md-6 text-dark">
-                            <h2>BPC HIPMI PADANG</h2>
-                            <p> JL. Veteran, No.12-C, Padang, West Sumatera, Purus, Padang Barat, Padang City, West Sumatra 25115 </p>
+                    <div class="col-md-12 col-sm-12 mb-4">
+                        <div class="row ">
+                            <div class="col-md-4">
+                                <img src="{{asset('backend/src/images/logo/logo-hipmi.png')}}" alt="sda" style="margin-left: 50px">
+                            </div>
+                            <div class="col-md-6 text-dark">
+                                <h2>BPC HIPMI PADANG</h2>
+                                <p> JL. Veteran, No.12-C, Padang, West Sumatera, Purus, Padang Barat, Padang City, West
+                                    Sumatra 25115 </p>
+                                <div class="">
+                                    <i class="bi bi-youtube"></i>
+                                    <i class="bi bi-instagram"></i>
+                                    <i class="bi bi-twitter"></i>
+                                    <i class="bi bi-facebook"></i>
+                                    <i class="bi bi-gmail"></i>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -56,57 +67,11 @@
             </div>
         </div>
 
-        <!-- Checkbox select Datatable start -->
-        {{-- <div class="card-box mb-30">
-                <div class="pd-20">
-                    <h4 class="text-dark h4">Data Divisi</h4>
-                </div>
 
-                <div class="pb-20">
-                    <table class="data-table table stripe hover nowrap">
-                        <thead>
-                            <tr>
-
-                                <th>#</th>
-                                <th>Nama</th>
-                                <th>Action</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $index=>$item )
-                            <tr>
-                                <td>{{$index+1}}</td>
-        <td>{{$item->namaDivisi}}</td>
-        <td>
-            <a href="/dashboard/divisi/{{$item->id}}/edit" class="btn btn-warning btn-sm"> <i
-                    class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                Edit</a>
-            <form method="post" id="myForm" class="d-inline">
-                @csrf
-                @method('delete')
-                <a onclick="hapus('divisi',{{$item->id}})" class="btn btn-danger btn-sm"> <i class="fa fa-trash"
-                        aria-hidden="true"></i>
-                    Delete</a>
-            </form>
-        </td>
-        </tr>
-        @endforeach
-        </tbody>
-        </table>
     </div>
-
-
-</div> --}}
-
-<!-- Checkbox select Datatable End -->
-
-<!-- Export Datatable End -->
-</div>
-<div class="footer-wrap pd-20 mb-20 card-box">
-    &copy; Copyright {{date('Y')}} - <a href="#">Fanda Alfaridzi</a>
-</div>
-</div>
+    <div class="footer-wrap pd-20 mb-20 card-box">
+        &copy; Copyright {{date('Y')}} - <a href="#">Fanda Alfaridzi</a>
+    </div>
 </div>
 
 

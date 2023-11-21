@@ -21,11 +21,12 @@ return new class extends Migration
             $table->text('misi');
             $table->text('telephone');
             $table->text('whatapps');
-            $table->text('insatgram');
-            $table->text('facebook');
-            $table->text('twitter');
-            $table->text('youtube');
-            $table->text('email');
+            $table->text('insatgram')->nullable();
+            $table->text('facebook')->nullable();
+            $table->text('linkedin')->nullable();
+            $table->text('twitter')->nullable();
+            $table->text('youtube')->nullable();
+            $table->text('email')->nullable();
             $table->timestamps();
         });
     }

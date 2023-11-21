@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('gambar_usaha');
             $table->string('namaUsaha');
             $table->text('lokasi');
+            $table->text('deskripsiUsaha')->nullable();
             $table->timestamps();
         });
     }

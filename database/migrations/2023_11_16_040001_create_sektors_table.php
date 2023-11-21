@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('namaSektor');
             $table->text('gambarSektor');
+            $table->text('deskripsiSektor');
             $table->timestamps();
         });
     }

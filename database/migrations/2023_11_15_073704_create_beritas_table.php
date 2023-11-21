@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('slug');
             $table->string('tanggalBerita');
             $table->text('gambarBerita');
-            $table->text('quotes');
+            $table->text('quotes')->nullable();
             $table->text('deskripsi');
             $table->timestamps();
         });

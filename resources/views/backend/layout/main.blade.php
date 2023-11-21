@@ -28,6 +28,11 @@
 
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
+    {{--  --}}
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+  <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+
+
     {{-- end --}}
 
     <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
@@ -184,3 +189,4 @@
 	<script src="{{asset('backend/vendors/scripts/datatable-setting.js')}}"></script>
 </body>
 </html>
+

@@ -45,17 +45,21 @@
                         <thead>
                             <tr>
                                 {{-- <th class="table-plus datatable-nosort">Name</th> --}}
-                                <th>#</th>
-                                <th>Nama</th>
-                                <th>Action</th>
+                                <th width="">#</th>
+                                <th width="">Nama</th>
+                                <th width="">Gambar </th>
+                                <th width="">Deskripsi</th>
+                                <th width="">Action</th>
                                 {{-- <th class="datatable-nosort">Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $index=>$item )
                             <tr>
-                                <td>{{$index+1}}</td>
+                                <td>{{$index + 1}}</td>
                                 <td>{{$item->namaSektor}}</td>
+                                <td><img src="{{asset('backend/images/sektor/'.$item->gambarSektor)}}" width="100px" height="150px"></td>
+                                <td>{!! Str::words($item->deskripsiSektor, 5, '...')!!}</td>
                                 <td>
                                     <a href="/dashboard/sektor/{{$item->id}}/edit" class="btn btn-warning btn-sm"> <i
                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>

@@ -52,6 +52,21 @@
                                 <div class="form-control-feedback text-danger">{{$message}}</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label>Gambar Sektor</label>
+                            <img class="d-block bordered" src="{{asset('backend/images/sektor/'.$data->gambarSektor)}}" height="300px" width="200px" alt="">
+                            <input class="form-control @error('gambarSektor')
+                                form-control-danger
+                            @enderror" type="file" name="gambarSektor" accept="" value="{{old('gambarSektor')}}" placeholder="Kesehatan">
+                        </div>
+                        <div class="form-group">
+                            <label>Deskripsi</label>
+                            @error('deskripsiSektor')
+                                <div class="form-control-feedback text-danger">{{$message}}</div>
+                            @enderror
+                            <input class="form-contro" type="hidden" id="deskripsi" name="deskripsiSektor" value="{!!$data->deskripsiSektor!!}" placeholder="Kesehatan">
+                            <trix-editor input="deskripsi"></trix-editor>
+                        </div>
 
                         <div class="d-flex justify-content-end">
                             <button type="reset" class="btn btn-secondary btn-sm  mx-2"> <i class="fa fa-undo" aria-hidden="true"></i>
