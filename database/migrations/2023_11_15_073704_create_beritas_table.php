@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('beritas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('idKategori');
             $table->string('judulBerita');
             $table->text('slug');
-            $table->string('tanggalBerita');
+            $table->date('tanggalBerita');
             $table->text('gambarBerita');
             $table->text('quotes')->nullable();
             $table->text('deskripsi');

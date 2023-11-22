@@ -11,5 +11,7 @@ class Kategori extends Model
 
     protected $guarded = [];
 
-
+    public function berita(){
+        return $this->hasMany(Berita::class);
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\FrontendController;
@@ -23,6 +24,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontendController::class,'index']);
+Route::get('/kepengurusan', [FrontendController::class,'blog']);
+Route::get('/tentang-kami', [FrontendController::class,'blog']);
+Route::get('/anggota', [FrontendController::class,'blog']);
+Route::get('/berita', [FrontendController::class,'blog']);
+Route::get('/berita/{slug}', [FrontendController::class,'singleBlog']);
+Route::get('/kegiatan', [FrontendController::class,'singleBlog']);
+Route::get('/contact', [FrontendController::class,'singleBlog']);
 
 route::get('/login',[LoginController::class,'login']);
 route::post('/login',[LoginController::class,'loginAction']);
@@ -36,6 +44,7 @@ route::resource('/dashboard/divisi',DivisiController::class);
 route::resource('/dashboard/sektor',SektorController::class);
 route::resource('/dashboard/profile',ProfileController::class);
 route::resource('/dashboard/user',UserController::class);
+route::resource('/dashboard/berita',BeritaController::class);
 
 Route::middleware('auth')->group(function () {
 

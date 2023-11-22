@@ -29,12 +29,22 @@
 					</li>
 					<li class="">
 						<a href="/dashboard/user" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-library"></span><span class="mtext">User</span>
+							<span class="micon dw  bi-person-badge-fill"></span><span class="mtext">User</span>
 						</a>
 					</li>
 					<li class="">
-						<a href="#" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-library"></span><span class="mtext">Transaksi Penjualan</span>
+						<a href="/dashboard/berita" class="dropdown-toggle no-arrow">
+							<span class="micon dw bi-newspaper"></span><span class="mtext">Berita</span>
+						</a>
+					</li>
+					<li class="">
+						<a href="/dashboard/kegiatan" class="dropdown-toggle no-arrow">
+							<span class="micon dw bi-calendar-event-fill"></span><span class="mtext">Kegiatan</span>
+						</a>
+					</li>
+					<li class="">
+						<a href="/dashboard/anggota" class="dropdown-toggle no-arrow">
+							<span class="micon dw bi-people-fill"></span><span class="mtext">Anggota</span>
 						</a>
 					</li>
 					<li>

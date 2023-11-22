@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\File;
 use Str;
 class BeritaController extends Controller
 {
@@ -41,14 +41,19 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
+        $namaGambar = time().'-'.$request->gambarBerita->getClientOriginalName();
+        $request->gambarBerita->move(public_path('backend/images/berita'),$namaGambar);
+
         $validate = $request->validate([
+            'idKategori'=>'required',
             'judulBerita'=>'required',
-            'gambarBerita'=>'required',
+            // 'gambarBerita'=>'required',
             'tanggalBerita'=>'required',
-            'quotes'=>'required',
+            'quotes'=>'nullable',
             'deskripsi'=>'required',
         ]);
 
+        $validate['gambarBerita']= $namaGambar;
         $validate['slug']= Str::slug($request->judulBerita);
 
         Berita::Create($validate);
@@ -90,13 +95,35 @@ class BeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validate = $request->validate([
-            'judulBerita'=>'required',
-            'gambarBerita'=>'required',
-            'tanggalBerita'=>'required',
-            'quotes'=>'required',
-            'deskripsi'=>'required',
-        ]);
+
+        if($request->gambarBerita != null){
+            $berita = Berita::find($id);
+            File::delete('backend/images/berita/'.$berita->gambarBerita);
+
+            $namaGambar = time().'-'.$request->gambarBerita->getClientOriginalName();
+            $request->gambarBerita->move(public_path('backend/images/berita'),$namaGambar);
+
+            $validate = $request->validate([
+                'idKategori'=>'nullable',
+                'judulBerita'=>'required',
+                // 'gambarBerita'=>'required',
+                'tanggalBerita'=>'required',
+                'quotes'=>'required',
+                'deskripsi'=>'required',
+            ]);
+            $validate['gambarBerita']= $namaGambar;
+        }
+        else
+        {
+            $validate = $request->validate([
+                'idKategori'=>'nullable',
+                'judulBerita'=>'required',
+                // 'gambarBerita'=>'required',
+                'tanggalBerita'=>'required',
+                'quotes'=>'required',
+                'deskripsi'=>'required',
+            ]);
+        }
 
         $validate['slug']= Str::slug($request->judulBerita);
 
@@ -113,6 +140,9 @@ class BeritaController extends Controller
      */
     public function destroy($id)
     {
+        $berita = Berita::find($id);
+        File::delete('backend/images/berita/'.$berita->gambarBerita);
+
         Berita::destroy($id);
         return back()->with('success','Data Berhasil Dihapus');
     }

@@ -960,7 +960,7 @@ section {
 .testimonials .swiper-pagination .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
-  background-color: #fff;
+  background-color: #4f4a4a;
   opacity: 1;
   border: 1px solid rgb(238, 197, 16);
 }
@@ -1693,7 +1693,7 @@ section {
 
 .blog .entry .entry-content .read-more a {
   display: inline-block;
-  background: rgb(238, 197, 16);
+  background: rgb(19, 19, 18);
   color: #fff;
   padding: 6px 20px;
   transition: 0.3s;

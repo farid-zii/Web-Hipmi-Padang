@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anggota;
+use App\Models\Divisi;
+use App\Models\Jabatan;
 use Illuminate\Http\Request;
 
 class AnggotaController extends Controller
@@ -14,7 +16,10 @@ class AnggotaController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.kategori.index',[
+            'divisi'=>Divisi::get(),
+            'd'=>Jabatan::get(),
+        ]);
     }
 
     /**

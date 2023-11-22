@@ -10,5 +10,12 @@ class FrontendController extends Controller
         return view('frontend.index');
     }
 
+    public function blog(){
+        return view('frontend.berita');
+    }
+    public function singleBlog(){
+        return view('frontend.berita');
+    }
+
 
 }
