@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('noHp');
             $table->string('email');
             $table->string('subject');
+            $table->text('deskripsi');
             $table->text('file');
             $table->timestamps();
         });

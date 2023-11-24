@@ -30,12 +30,6 @@
                     <form action="/dashboard/berita/{{$data->id}}" method="post" enctype="multipart/form-data">
                         @method('put')
                         @csrf
-                        {{-- <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Nama Kategori</label>
-                            <div class="col-sm-12 col-md-8">
-                                <input class="form-control" type="text" placeholder="xxx" name="nama">
-                            </div>
-                        </div> --}}
                         <div class="form-group">
                             <label>Judul</label>
                             <input class="form-control @error('judulBerita')

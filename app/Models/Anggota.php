@@ -17,4 +17,9 @@ class Anggota extends Model
     public function divisi(){
         return $this->belongsTo(Divisi::class,'idDivisi');
     }
+
+    // hasmany
+    public function kepengurusan(){
+        return $this->hasMany(Kepengurusan::class);
+    }
 }

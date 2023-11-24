@@ -43,6 +43,11 @@
 						</a>
 					</li>
 					<li class="">
+						<a href="/dashboard/kepengurusan" class="dropdown-toggle no-arrow">
+							<span class="micon dw bi-diagram-3-fill"></span><span class="mtext">Kepengurusan</span>
+						</a>
+					</li>
+					<li class="">
 						<a href="/dashboard/anggota" class="dropdown-toggle no-arrow">
 							<span class="micon dw bi-people-fill"></span><span class="mtext">Anggota</span>
 						</a>

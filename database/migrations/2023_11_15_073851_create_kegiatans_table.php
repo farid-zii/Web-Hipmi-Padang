@@ -18,10 +18,8 @@ return new class extends Migration
             $table->string('namaKegiatan');
             $table->time('jamMulai');
             $table->time('jamAkhir');
-            $table->date('tanggalKegiatanMulai');
-            $table->date('tanggalKegiatanAkhir');
+            $table->date('tanggalKegiatan');
             $table->text('tentangKegiatan');
-            $table->text('gambarKegiatan');
             $table->text('deskripsiKegiatan');
             $table->timestamps();
         });

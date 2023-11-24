@@ -14,7 +14,9 @@ class KegiatanController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.kegiatan.index',[
+            'data'=>Kegiatan::get()
+        ]);
     }
 
     /**
@@ -24,7 +26,7 @@ class KegiatanController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.kegiatan.create');
     }
 
     /**
@@ -35,7 +37,9 @@ class KegiatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'namaKegiatan'=>'required',
+        ]);
     }
 
     /**

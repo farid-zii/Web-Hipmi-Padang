@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
+use App\Models\Sektor;
 use App\Models\Usaha;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,9 @@ class UsahaController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.usaha.index',[
+            'data'=>Usaha::get()
+        ]);
     }
 
     /**
@@ -24,7 +28,10 @@ class UsahaController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.usaha.index',[
+            'sektor'=>Sektor::get(),
+            'anggota'=>Anggota::get(),
+        ]);
     }
 
     /**
@@ -35,7 +42,11 @@ class UsahaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'id_anggota'=>'required',
+            'id_sektor'=>'required',
+            'lokasi'=>'required',
+        ]);
     }
 
     /**

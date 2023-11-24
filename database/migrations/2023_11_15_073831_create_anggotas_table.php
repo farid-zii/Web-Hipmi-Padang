@@ -15,13 +15,12 @@ return new class extends Migration
     {
         Schema::create('anggotas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idDivisi');
-            $table->foreignId('idJabatan');
+            $table->foreignId('idDivisi')->nullable();
             $table->string('nama');
             $table->string('email');
             $table->string('alamat');
             $table->string('noHp');
-            $table->string('namaPerusahaan');
+            // $table->string('namaPerusahaan');
             $table->string('jKelamin');
             $table->string('tempatLahir');
             $table->date('tanggalLahir');
@@ -30,6 +29,7 @@ return new class extends Migration
             $table->text('twitter')->nullable();
             $table->text('facebook')->nullable();
             $table->text('linkedin')->nullable();
+            $table->text('foto')->nullable();
             $table->timestamps();
         });
     }

@@ -44,7 +44,7 @@
                             </div>
                         </div> --}}
                         <div class="form-group">
-                            <label>Nama Sektor</label>
+                            <label style="">Nama Sektor</label>
                             <input class="form-control @error('namaSektor')
                                 form-control-danger
                             @enderror" type="text" name="namaSektor" value="{{$data->namaSektor}}" placeholder="Teknologi">

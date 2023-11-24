@@ -17,6 +17,13 @@
                             </ol>
                         </nav>
                     </div>
+                    {{-- <div class="col-md-6 col-sm-12 text-right">
+                        <div class="dropdown">
+                            <a class="btn btn-primary dropdown-toggle" href="/dashboard/kategori/create" role="button">
+                                Tambah
+                            </a>
+                        </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -27,8 +34,8 @@
                 </div> --}}
                 <div class="pb-20 p-4">
                     {{-- <a href="/dashboard/jabatan" class="btn btn-dark btn-sm"> Kembali</a> --}}
-                    <form action="/dashboard/berita/{{$data->id}}" method="post" enctype="multipart/form-data">
-                        @method('put')
+                    <form action="/dashboard/berita" method="post" enctype="multipart/form-data">
+                        @method('post')
                         @csrf
                         {{-- <div class="form-group row">
                             <label class="col-sm-12 col-md-2 col-form-label">Nama Kategori</label>
@@ -40,7 +47,7 @@
                             <label>Judul</label>
                             <input class="form-control @error('judulBerita')
                                 form-control-danger
-                            @enderror" type="text" name="judulBerita" value="{{$data->judulBerita}}" placeholder="Kesehatan" required>
+                            @enderror" type="text" name="judulBerita" value="{{old('judulBerita')}}" placeholder="Kesehatan" required>
                             @error('judulBerita')
                                 <div class="form-control-feedback text-danger">{{$message}}</div>
                             @enderror
@@ -51,7 +58,7 @@
                             <select class="form-control @error('idKategori') form-control-danger @enderror" name="idKategori">
                                 <option value="" >----Pilih Kategori---</option>
                                 @foreach ($kategori as $item )
-                                    <option value="{{$item->id}}" {{$data->id == $item->id ? 'selected':''}}>{{$item->namaKategori}}</option>
+                                    <option value="{{$item->id}}">{{$item->namaKategori}}</option>
                                 @endforeach
                             </select>
                             @error('idKategori')
@@ -63,7 +70,7 @@
                             <label>Tanggal Berita</label>
                             <input class="form-control @error('tanggalBerita')
                                 form-control-danger
-                            @enderror" type="date" name="tanggalBerita" value="{{$data->tanggalBerita}}" placeholder="Kesehatan" required>
+                            @enderror" type="date" name="tanggalBerita" value="{{old('tanggalBerita')}}" placeholder="Kesehatan" required>
                             @error('tanggalBerita')
                                 <div class="form-control-feedback text-danger">{{$message}}</div>
                             @enderror
@@ -71,10 +78,9 @@
 
                         <div class="form-group">
                             <label>Gambar Berita</label>
-                            <img class="d-block bordered" src="{{asset('backend/images/berita/'.$data->gambarBerita)}}" height="300px" width="200px" alt="">
                             <input class="form-control @error('gambarBerita')
                                 form-control-danger
-                            @enderror" type="file" name="gambarBerita" accept="" value="{{$data->gambarBerita}}" placeholder="Kesehatan" required>
+                            @enderror" type="file" name="gambarBerita" accept="" value="{{old('gambarBerita')}}" placeholder="Kesehatan" required>
                             @error('gambarBerita')
                                 <div class="form-control-feedback text-danger">{{$message}}</div>
                             @enderror
@@ -85,12 +91,14 @@
                             @error('deskripsi')
                                 <div class="form-control-feedback text-danger">{{$message}}</div>
                             @enderror
-                            <textarea id="editor"  name="deskripsi" required>{{$data->deskripsi}}</textarea>
+                            <textarea id="editor"  name="deskripsi"></textarea>
+                            {{-- <input class="form-contro" type="hidden" id="deskripsi" name="deskripsi" value="">
+                            <trix-editor input="deskripsi"></trix-editor> --}}
                         </div>
 
                         <div class="form-group">
                             <label>Quotes</label>
-                            <textarea name="quotes" style="height: 100px">{{$data->quotes}}</textarea>
+                            <textarea class="form-control" style="height: 100px" name="quotes"></textarea>
                         </div>
 
                         <div class="d-flex justify-content-end">
@@ -107,7 +115,7 @@
 
             <!-- Export Datatable End -->
         </div>
-        <div class="footer-wrap pd-20 mb-20 card-box fixed-bottom">
+        <div class="footer-wrap pd-20 mb-20 card-box">
             &copy; Copyright {{date('Y')}} - <a href="#">Fanda Alfaridzi</a>
         </div>
     </div>

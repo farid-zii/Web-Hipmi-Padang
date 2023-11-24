@@ -93,7 +93,7 @@
 
             <div class="row justify-content-center mt-3 mb-5">
                 <div class="col-lg-11 row">
-                    <div class="col-lg-6 bg-dark p-4" style="color: whitesmoke ;text-align: justify" data-aos="fade-up">
+                    <div class="col-6 bg-dark p-4" style="color: whitesmoke ;text-align: justify" data-aos="fade-up">
                         <h2 style="border-bottom: 2px solid whitesmoke"> Visi </h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga enim tempore distinctio facere
                             tenetur facilis deleniti blanditiis doloremque est eligendi? Libero, consectetur. Tempora
@@ -104,7 +104,7 @@
                             voluptatem facilis? Sunt repudiandae exercitationem dolores harum totam reprehenderit
                             expedita deleniti</p>
                     </div>
-                    <div class="col-lg-6 bg-warning p-4" style="text-align: justify" data-aos="fade-in">
+                    <div class="col-6 bg-warning p-4" style="text-align: justify" data-aos="fade-up">
                         <h2 style="border-bottom: 2px solid black">Misi</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga enim tempore distinctio facere
                             tenetur facilis deleniti blanditiis doloremque est eligendi? Libero, consectetur. Tempora

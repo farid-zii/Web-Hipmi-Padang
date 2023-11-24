@@ -6,6 +6,7 @@ use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KepengurusanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SektorController;
@@ -45,6 +46,7 @@ route::resource('/dashboard/sektor',SektorController::class);
 route::resource('/dashboard/profile',ProfileController::class);
 route::resource('/dashboard/user',UserController::class);
 route::resource('/dashboard/berita',BeritaController::class);
+route::resource('/dashboard/kepengurusan',KepengurusanController::class);
 
 Route::middleware('auth')->group(function () {
 
