@@ -14,7 +14,9 @@ class SuratController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.pesan.index',[
+            'data'=>Surat::get()
+        ]);
     }
 
     /**
@@ -35,7 +37,7 @@ class SuratController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -44,9 +46,11 @@ class SuratController extends Controller
      * @param  \App\Models\Surat  $surat
      * @return \Illuminate\Http\Response
      */
-    public function show(Surat $surat)
+    public function show($id)
     {
-        //
+        return view('backend.pesan.show',[
+            Surat::find($id)
+        ]);
     }
 
     /**
@@ -78,8 +82,10 @@ class SuratController extends Controller
      * @param  \App\Models\Surat  $surat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Surat $surat)
+    public function destroy($id)
     {
-        //
+        Surat::destroy($id);
+
+        return back()->with('success','Pesan Berhasil di hapus');
     }
 }

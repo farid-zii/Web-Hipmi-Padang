@@ -10,4 +10,8 @@ class Sektor extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function usaha(){
+        return $this->hasMany(Usaha::class);
+    }
 }

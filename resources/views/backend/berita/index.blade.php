@@ -59,7 +59,7 @@
                             <tr>
                                 <td>{{$index + 1}}</td>
                                 <td>{{$item->judulBerita}}</td>
-                                <td>{{$item->tanggalBerita->isoFormat('DD')}}</td>
+                                <td>{{carbon\carbon::parse($item->tanggalBerita)->isoFormat('DD-MM-YYYY')}}</td>
                                 <td><img src="{{asset('backend/images/berita/'.$item->gambarBerita)}}" width="100px" height="150px"></td>
                                 <td>{!! Str::words($item->deskripsi, 5, '...')!!}</td>
                                 <td>

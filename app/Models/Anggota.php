@@ -22,4 +22,7 @@ class Anggota extends Model
     public function kepengurusan(){
         return $this->hasMany(Kepengurusan::class);
     }
+    public function usaha(){
+        return $this->hasMany(Usaha::class);
+    }
 }

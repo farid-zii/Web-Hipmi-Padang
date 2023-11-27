@@ -17,7 +17,7 @@ class AnggotaController extends Controller
      */
     public function index()
     {
-        return view('backend.kategori.index',[
+        return view('backend.anggota.index',[
         'data'=>Anggota::get()
         ]);
     }
@@ -29,7 +29,7 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        return view('backend.kategori.index',[
+        return view('backend.anggota.create',[
             'divisi'=>Divisi::get(),
         ]);
     }
@@ -42,9 +42,7 @@ class AnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        $namaFoto = time().'-'.$request->foto->getClientOriginalName();
 
-        $request->foto->move(public_path('backend/images/foto-anggota'),$namaFoto);
 
         $validate=$request->validate([
             'nama'=>'required',
@@ -52,18 +50,22 @@ class AnggotaController extends Controller
             'idDivisi'=>'required',
             'alamat'=>'required',
             'noHp'=>'required',
-            'namaPerusahaan'=>'required',
+            // 'namaPerusahaan'=>'required',
             'jKelamin'=>'required',
             'tempatLahir'=>'required',
             'tanggalLahir'=>'required',
             'motto'=>'required',
+            'motto'=>'required',
             'twitter'=>'nullable',
             'facebook'=>'nullable',
-            'insatgram'=>'nullable',
+            'instagram'=>'nullable',
             'linkedin'=>'nullable',
         ]);
-
+        $namaFoto = time().'-'.$request->foto->getClientOriginalName();
+        $request->foto->move(public_path('backend/images/foto-anggota'),$namaFoto);
         $validate['foto']=$namaFoto;
+
+        Anggota::create($validate);
 
         return redirect('/dashboard/anggota')->with('Data Anggota Berhasil Ditambahkan');
     }
@@ -109,23 +111,22 @@ class AnggotaController extends Controller
             'idDivisi'=>'required',
             'alamat'=>'required',
             'noHp'=>'required',
-            'namaPerusahaan'=>'required',
+            // 'namaPerusahaan'=>'required',
             'jKelamin'=>'required',
             'tempatLahir'=>'required',
             'tanggalLahir'=>'required',
             'motto'=>'required',
             'twitter'=>'nullable',
             'facebook'=>'nullable',
-            'insatgram'=>'nullable',
+            'instagram'=>'nullable',
             'linkedin'=>'nullable',
         ]);
 
         if($request->foto){
             $lama = Anggota::find($id);
-            File::delete('backend/images/foto-anggota'.$lama->foto);
+            File::delete('backend/images/foto-anggota/'.$lama->foto);
             $namaFoto = time().'-'.$request->foto->getClientOriginalName();
             $request->foto->move(public_path('backend/images/foto-anggota'),$namaFoto);
-
             $validate['foto']=$namaFoto;
         }
 
@@ -143,7 +144,7 @@ class AnggotaController extends Controller
     public function destroy($id)
     {
         $lama = Anggota::find($id);
-        File::delete('backend/images/foto-anggota'.$lama->foto);
+        File::delete('backend/images/foto-anggota/'.$lama->foto);
 
         Anggota::destroy($id);
 

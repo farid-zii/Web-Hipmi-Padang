@@ -33,6 +33,11 @@
 						</a>
 					</li>
 					<li class="">
+						<a href="/dashboard/pesan" class="dropdown-toggle no-arrow">
+							<span class="micon dw  bi-messeger-fill"></span><span class="mtext">Pesan</span>
+						</a>
+					</li>
+					<li class="">
 						<a href="/dashboard/berita" class="dropdown-toggle no-arrow">
 							<span class="micon dw bi-newspaper"></span><span class="mtext">Berita</span>
 						</a>
@@ -53,7 +58,7 @@
 						</a>
 					</li>
 					<li class="">
-						<a href="/dashboard/anggota" class="dropdown-toggle no-arrow">
+						<a href="/dashboard/usaha" class="dropdown-toggle no-arrow">
 							<span class="micon dw bi-shop"></span><span class="mtext">UMKM</span>
 						</a>
 					</li>

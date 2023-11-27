@@ -10,18 +10,18 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Anggota</h4>
+                            <h4>UMKM</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Anggota</li>
+                                <li class="breadcrumb-item active" aria-current="page">UMKM</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
                         <div class="dropdown">
-                            <a class="btn btn-primary no-arrow" href="/dashboard/anggota/create" role="button">
+                            <a class="btn btn-primary no-arrow" href="/dashboard/usaha/create" role="button">
                                 Tambah
                             </a>
                             {{-- <a class="btn btn-primary no-arrow d-inline" href="/dashboard/anggota/create" role="button">
@@ -40,7 +40,7 @@
             <!-- Checkbox select Datatable start -->
             <div class="card-box mb-30">
                 <div class="pd-20">
-                    <h4 class="text-dark h4">Data Anggota</h4>
+                    <h4 class="text-dark h4">Data UMKM</h4>
                 </div>
 
                 <div class="pb-20">
@@ -49,10 +49,10 @@
                             <tr>
                                 {{-- <th class="table-plus datatable-nosort">Name</th> --}}
                                 <th width="">#</th>
-                                <th width="">Nama</th>
-                                <th width="">Divisi</th>
-                                <th width="">No Hp </th>
-                                <th width="">Email</th>
+                                <th width="">Nama UMKM</th>
+                                <th width="">Pemilik</th>
+                                <th width="">Sektor</th>
+                                <th width="">Lokasi</th>
                                 <th width="">Action</th>
                                 {{-- <th class="datatable-nosort">Action</th> --}}
                             </tr>
@@ -61,18 +61,19 @@
                             @foreach ($data as $index=>$item )
                             <tr>
                                 <td>{{$index + 1}}</td>
-                                <td>{{$item->nama}}</td>
-                                <td>{{$item->divisi == null ? '-': $item->divisi->namaDivisi;}}</td>
-                                <td>{{$item->noHp}}</td>
-                                <td>{{$item->email}}</td>
+                                <td>{{$item->namaUsaha}}</td>
+                                <td>{{$item->anggota->nama}}</td>
+                                <td>{{$item->sektor->namaSektor}}</td>
+                                <td>{{$item->lokasi}}</td>
+                                {{-- <td>{{$item->}}</td> --}}
                                 <td class="text-center">
-                                    <a href="/dashboard/anggota/{{$item->id}}/edit" class="btn btn-warning btn-sm"> <i
+                                    <a href="/dashboard/usaha/{{$item->id}}/edit" class="btn btn-warning btn-sm"> <i
                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         Edit</a>
                                     <form method="post" id="myForm" class="d-inline">
                                         @csrf
                                         @method('delete')
-                                        <a onclick="hapus('anggota',{{$item->id}})" class="btn btn-danger btn-sm"> <i
+                                        <a onclick="hapus('usaha',{{$item->id}})" class="btn btn-danger btn-sm"> <i
                                                 class="fa fa-trash" aria-hidden="true"></i>
                                             Delete</a>
                                     </form>

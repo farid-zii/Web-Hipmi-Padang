@@ -10,24 +10,20 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Berita</h4>
+                            <h4>Kegiatan</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Berita</li>
+                                <li class="breadcrumb-item active" aria-current="page">Kegiatan</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
                         <div class="dropdown">
-                            <a class="btn btn-primary no-arrow" href="/dashboard/berita/create" role="button">
+                            <a class="btn btn-primary no-arrow" href="/dashboard/kegiatan/create" role="button">
                                 Tambah
                             </a>
-                            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConfirmDelete">Launch
-  modal</button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                Tambah --}}
                             </button>
                         </div>
                     </div>
@@ -37,7 +33,7 @@
             <!-- Checkbox select Datatable start -->
             <div class="card-box mb-30">
                 <div class="pd-20">
-                    <h4 class="text-dark h4">Data Berita</h4>
+                    <h4 class="text-dark h4">Data Kegiatan</h4>
                 </div>
 
                 <div class="pb-20">

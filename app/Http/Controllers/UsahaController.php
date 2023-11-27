@@ -6,6 +6,7 @@ use App\Models\Anggota;
 use App\Models\Sektor;
 use App\Models\Usaha;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class UsahaController extends Controller
 {
@@ -28,7 +29,7 @@ class UsahaController extends Controller
      */
     public function create()
     {
-        return view('backend.usaha.index',[
+        return view('backend.usaha.create',[
             'sektor'=>Sektor::get(),
             'anggota'=>Anggota::get(),
         ]);
@@ -52,14 +53,19 @@ class UsahaController extends Controller
         ]);
 
         if($request->logo){
-            $namaLogo = time().'-'.$request->logo->getOrigiinalClientName();
+            $namaLogo = time().'-'.$request->logo->getClientOriginalName();
             $request->logo->move(public_path('backend/images/logo-umkm'),$namaLogo);
             $validate['logo']= $namaLogo;
+        }
+        if($request->gambarUsaha){
+            $gambarUsaha = time().'-'.$request->logo->getClientOriginalName();
+            $request->gambarUsaha->move(public_path('backend/images/foto-umkm'),$gambarUsaha);
+            $validate['gambar_usaha']= $gambarUsaha;
         }
 
         Usaha::create($validate);
 
-        return redirect('/dashboard/umkm')->with('success','Data UMKM baru berhasil ditambahkan');
+        return redirect('/dashboard/usaha')->with('success','Data UMKM baru berhasil ditambahkan');
 
     }
 
@@ -80,9 +86,13 @@ class UsahaController extends Controller
      * @param  \App\Models\Usaha  $usaha
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usaha $usaha)
+    public function edit($id)
     {
-        //
+        return view('backend.usaha.edit',[
+            'data'=>Usaha::find($id),
+            'sektor'=>Sektor::get(),
+            'anggota'=>Anggota::get(),
+        ]);
     }
 
     /**
@@ -92,9 +102,37 @@ class UsahaController extends Controller
      * @param  \App\Models\Usaha  $usaha
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usaha $usaha)
+    public function update(Request $request, $id)
     {
-        //
+        $usaha = Usaha::find($id);
+        $validate = $request->validate([
+            'id_anggota'=>'required',
+            'id_sektor'=>'required',
+            'namaUsaha'=>'required',
+            'lokasi'=>'required',
+            'deskripsiUsaha'=>'required',
+        ]);
+
+        if($request->logo){
+            if($usaha->logo){
+            file::delete('backend/images/logo-umkm/'.$usaha->logo);
+        }
+            $namaLogo = time().'-'.$request->logo->getOrigiinalClientName();
+            $request->logo->move(public_path('backend/images/logo-umkm'),$namaLogo);
+            $validate['logo']= $namaLogo;
+        }
+        if($request->gambarUsaha){
+            if($usaha->gambar_usaha){
+            File::delete('backend/images/foto-umkm/'.$usaha->logo);
+        }
+            $gambarUsaha = time().'-'.$request->logo->getOrigiinalClientName();
+            $request->gambarUsaha->move(public_path('backend/images/foto-umkm'),$gambarUsaha);
+            $validate['gambar_usaha']= $gambarUsaha;
+        }
+
+        Usaha::find($id)->update($validate);
+
+        return redirect('/dashboard/usaha')->with('success','Data UMKM Berhasi Diedit');
     }
 
     /**
@@ -103,8 +141,17 @@ class UsahaController extends Controller
      * @param  \App\Models\Usaha  $usaha
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usaha $usaha)
+    public function destroy($id)
     {
-
+        $usaha = Usaha::find($id);
+        if($usaha->logo){
+            file::delete('backend/images/logo-umkm/'.$usaha->logo);
+        }
+        if($usaha->foto){
+            File::delete('backend/images/foto-umkm/'.$usaha->logo);
+        }
+        Usaha::destroy($id);
+        return back()->with('success','Data UMKM Berhasil Dihapus');
     }
 }
+

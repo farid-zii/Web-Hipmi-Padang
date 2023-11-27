@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // Sektor
+        //  Sektor::factory()->create([
+        //     'namaSektor'=>'Jasa'
+        //  ]);
 
         // #region
         // Sektor::factory()->create([

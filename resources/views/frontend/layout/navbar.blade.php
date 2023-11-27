@@ -35,9 +35,9 @@
           </li>
           <li><a href="/berita" class="{{Request::segment(1) == 'berita' ? 'active':''}}">Berita</a></li>
           <li><a href="/kegiatan" {{request::segment(1) == 'kegiatan' ? 'active':''}}>Kegiatan</a></li>
-          <li><a href="/sektor" {{request::segment(1) == 'sektor' ? 'active':''}}>Sektor</a></li>
+          <li><a href="/umkm" {{request::segment(1) == 'umkm' ? 'active':''}}>UMKM</a></li>
           {{-- <li><a href="blog.html">Blog</a></li> --}}
-          <li><a href="contact.html" {{request::segment(1) == 'contact' ? 'active':''}}>Contact</a></li>
+          <li><a href="/contact" {{request::segment(1) == 'contact' ? 'active':''}}>Contact</a></li>
 
           <li><a class="getstarted bg-warning text-dark" href="about.html">Join Now</a></li>
         </ul>

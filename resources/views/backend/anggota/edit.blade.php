@@ -8,15 +8,22 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Tambah Data Berita</h4>
+                            <h4>Tambah Data Anggota</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Berita</li>
+                                <li class="breadcrumb-item active" aria-current="page">Anggota</li>
                             </ol>
                         </nav>
                     </div>
+                    {{-- <div class="col-md-6 col-sm-12 text-right">
+                        <div class="dropdown">
+                            <a class="btn btn-primary dropdown-toggle" href="/dashboard/kategori/create" role="button">
+                                Tambah
+                            </a>
+                        </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -27,70 +34,133 @@
                 </div> --}}
                 <div class="pb-20 p-4">
                     {{-- <a href="/dashboard/jabatan" class="btn btn-dark btn-sm"> Kembali</a> --}}
-                    <form action="/dashboard/berita/{{$data->id}}" method="post" enctype="multipart/form-data">
+                    <form action="/dashboard/anggota/{{$data->id}}" method="post" enctype="multipart/form-data">
                         @method('put')
                         @csrf
-                        {{-- <div class="form-group row">
-                            <label class="col-sm-12 col-md-2 col-form-label">Nama Kategori</label>
-                            <div class="col-sm-12 col-md-8">
-                                <input class="form-control" type="text" placeholder="xxx" name="nama">
+
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input class="form-control @error('nama')
+                                form-control-danger
+                            @enderror" type="text" name="nama" value="{{$data->nama}}" placeholder="Kesehatan" required>
+                            @error('nama')
+                                <div class="form-control-feedback text-danger">{{$message}}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-6">
+                                <label>Tempat Lahir</label>
+                                <input class="form-control @error('tempatLahir')
+                                    form-control-danger
+                                @enderror" type="text" name="tempatLahir" value="{{$data->tempatLahir}}" placeholder="Padang" required>
+                                @error('tempatLahir')
+                                    <div class="form-control-feedback text-danger">{{$message}}</div>
+                                @enderror
                             </div>
-                        </div> --}}
+                            <div class="col-6">
+                                <label>Tanggal Lahir</label>
+                                <input class="form-control @error('tanggalLahir')
+                                    form-control-danger
+                                @enderror" type="date" name="tanggalLahir" value="{{$data->tanggalLahir}}" placeholder="Kesehatan" required>
+                                @error('tanggalLahir')
+                                    <div class="form-control-feedback text-danger">{{$message}}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-6">
+                                <label>Nomor Hp</label>
+                                <input  type="text" class="form-control @error('noHp') form-control-danger @enderror" value="{{$data->noHp}}" name="noHp" required>
+                                @error('noHp')
+                                    <div class="form-control-feedback text-danger">{{$message}}</div>
+                                @enderror
+                            </div>
+                            <div class="col-6">
+                                <label>Email</label>
+                                <input type="email" class="form-control @error('email') form-control-danger @enderror" value="{{$data->email}}" name="email" required>
+                                @error('email')
+                                    <div class="form-control-feedback text-danger">{{$message}}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-6">
+                                <label>Jenis Kelamin</label>
+                                <select class="form-control @error('jKelamin') form-control-danger @enderror" name="jKelamin" required>
+                                    <option value="Laki - Laki" >Laki-Laki</option>
+                                    <option value="Perempuan" >Perempuan</option>
+                                </select>
+                                @error('jKelamin')
+                                    <div class="form-control-feedback text-danger">{{$message}}</div>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group">
-                            <label>Judul</label>
-                            <input class="form-control @error('judulBerita')
+                            <label>Foto</label>
+                            <input class="form-control @error('foto')
                                 form-control-danger
-                            @enderror" type="text" name="judulBerita" value="{{$data->judulBerita}}" placeholder="Kesehatan" required>
-                            @error('judulBerita')
+                            @enderror" type="file" name="foto" accept="" value="{{old('foto')}}" placeholder="Kesehatan" >
+                            {{-- @error('foto')
                                 <div class="form-control-feedback text-danger">{{$message}}</div>
-                            @enderror
+                            @enderror --}}
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-6">
+                                <label>Divisi</label>
+                                <select class="form-control @error('idDivisi') form-control-danger @enderror" name="idDivisi">
+                                    <option value="" >----Pilih Kategori---</option>
+                                    @foreach ($divisi as $item )
+                                        <option value="{{$item->id}}">{{$item->namaDivisi}}</option>
+                                    @endforeach
+                                </select>
+                                @error('idDivisi')
+                                    <div class="form-control-feedback text-danger">{{$message}}</div>
+                                @enderror
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label>Kategori</label>
-                            <select class="form-control @error('idKategori') form-control-danger @enderror" name="idKategori">
-                                <option value="" >----Pilih Kategori---</option>
-                                @foreach ($kategori as $item )
-                                    <option value="{{$item->id}}" {{$data->id == $item->id ? 'selected':''}}>{{$item->namaKategori}}</option>
-                                @endforeach
-                            </select>
-                            @error('idKategori')
-                                <div class="form-control-feedback text-danger">{{$message}}</div>
-                            @enderror
+                                <label>Alamat</label>
+                                <textarea class="form-control @error('alamat')
+                                    form-control-danger
+                                @enderror" type="text" name="alamat" value="{{$data->alamat}}" placeholder="Padang" required></textarea>
+                                @error('alamat')
+                                    <div class="form-control-feedback text-danger">{{$message}}</div>
+                                @enderror
                         </div>
 
                         <div class="form-group">
-                            <label>Tanggal Berita</label>
-                            <input class="form-control @error('tanggalBerita')
-                                form-control-danger
-                            @enderror" type="date" name="tanggalBerita" value="{{$data->tanggalBerita}}" placeholder="Kesehatan" required>
-                            @error('tanggalBerita')
-                                <div class="form-control-feedback text-danger">{{$message}}</div>
-                            @enderror
+                                <label>Motto</label>
+                                <textarea class="form-control @error('motto')
+                                    form-control-danger
+                                @enderror" type="text" name="motto" value="{{$data->motto}}" placeholder="Padang" required></textarea>
+                                @error('motto')
+                                    <div class="form-control-feedback text-danger">{{$message}}</div>
+                                @enderror
                         </div>
 
-                        <div class="form-group">
-                            <label>Gambar Berita</label>
-                            <img class="d-block bordered" src="{{asset('backend/images/berita/'.$data->gambarBerita)}}" height="300px" width="200px" alt="">
-                            <input class="form-control @error('gambarBerita')
-                                form-control-danger
-                            @enderror" type="file" name="gambarBerita" accept="" value="{{$data->gambarBerita}}" placeholder="Kesehatan" required>
-                            @error('gambarBerita')
-                                <div class="form-control-feedback text-danger">{{$message}}</div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label>Deskripsi</label>
-                            @error('deskripsi')
-                                <div class="form-control-feedback text-danger">{{$message}}</div>
-                            @enderror
-                            <textarea id="editor"  name="deskripsi" required>{{$data->deskripsi}}</textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Quotes</label>
-                            <textarea name="quotes" style="height: 100px">{{$data->quotes}}</textarea>
+                        <div class="form-group row">
+                            <div class="col-6">
+                                <label>Facebook</label>
+                                <input type="text" class="form-control" name="facebook" value="{{$data->facebook}}"  placeholder="masukkan url">
+                            </div>
+                            <div class="col-6">
+                                <label>Twitter</label>
+                                <input type="text" class="form-control" name="twitter" value="{{$data->twitter}}" placeholder="masukkan url" >
+                            </div>
+                            <div class="col-6">
+                                <label>Insatgram</label>
+                                <input type="text" class="form-control" name="instagram" placeholder="masukkan url">
+                            </div>
+                            <div class="col-6">
+                                <label>LinkedIn</label>
+                                <input type="text" class="form-control" name="linkedin" placeholder="masukkan url">
+                            </div>
                         </div>
 
                         <div class="d-flex justify-content-end">
@@ -107,7 +177,7 @@
 
             <!-- Export Datatable End -->
         </div>
-        <div class="footer-wrap pd-20 mb-20 card-box fixed-bottom">
+        <div class="footer-wrap pd-20 mb-20 card-box">
             &copy; Copyright {{date('Y')}} - <a href="#">Fanda Alfaridzi</a>
         </div>
     </div>
