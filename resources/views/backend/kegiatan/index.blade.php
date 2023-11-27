@@ -42,9 +42,9 @@
                             <tr>
                                 {{-- <th class="table-plus datatable-nosort">Name</th> --}}
                                 <th width="">#</th>
-                                <th width="">Judul</th>
-                                <th width="">Tanggal</th>
-                                <th width="">Gambar </th>
+                                <th width="">Kegiatan</th>
+                                <th width="">Waktu</th>
+                                <th width="">Lokasi</th>
                                 <th width="">Deskripsi</th>
                                 <th width="">Action</th>
                                 {{-- <th class="datatable-nosort">Action</th> --}}
@@ -54,18 +54,23 @@
                             @foreach ($data as $index=>$item )
                             <tr>
                                 <td>{{$index + 1}}</td>
-                                <td>{{$item->judulBerita}}</td>
-                                <td>{{$item->tanggalBerita->isoFormat('DD')}}</td>
-                                <td><img src="{{asset('backend/images/berita/'.$item->gambarBerita)}}" width="100px" height="150px"></td>
-                                <td>{!! Str::words($item->deskripsi, 5, '...')!!}</td>
+                                <td>{{$item->namaKegiatan}}</td>
                                 <td>
-                                    <a href="/dashboard/berita/{{$item->id}}/edit" class="btn btn-warning btn-sm"> <i
+                                    {{carbon\carbon::parse($item->tanggalKegiatan)->isoFormat('DD MMMM YYYY')}}
+                                    <br>
+                                    Jam : {{carbon\carbon::parse($item->jamMulai)->isoFormat('HH:mm').' - '. $item->jamAkhir}}
+                                </td>
+                                {{-- <td><img src="{{asset('backend/images/berita/'.$item->gambarBerita)}}" width="100px" height="150px"></td> --}}
+                                <td>{{ $item->lokasi}}</td>
+                                <td>{{ Str::words(strip_tags($item->deskripsiKegiatan), 5, '...')}}</td>
+                                <td>
+                                    <a href="/dashboard/kegiatan/{{$item->id}}/edit" class="btn btn-warning btn-sm"> <i
                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         Edit</a>
                                     <form method="post" id="myForm" class="d-inline">
                                         @csrf
                                         @method('delete')
-                                        <a onclick="hapus('berita',{{$item->id}})" class="btn btn-danger btn-sm"> <i
+                                        <a onclick="hapus('kegiatan',{{$item->id}})" class="btn btn-danger btn-sm"> <i
                                                 class="fa fa-trash" aria-hidden="true"></i>
                                             Delete</a>
                                     </form>

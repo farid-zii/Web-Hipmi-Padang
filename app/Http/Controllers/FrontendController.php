@@ -14,6 +14,9 @@ class FrontendController extends Controller
     public function index(){
         return view('frontend.index');
     }
+    public function about(){
+        return view('frontend.tentangKami');
+    }
 
     public function berita(Request $request){
 
@@ -54,6 +57,11 @@ class FrontendController extends Controller
             'data'=>$berita
         ]);
     }
+
+    public function kegiatan(){
+        return view('frontend.kegiatan');
+    }
+
     public function kepengurusan($tahun){
         // $tahun =2020;
         $kepengurusan = Kepengurusan::where('tahunMulai',$tahun)->first();

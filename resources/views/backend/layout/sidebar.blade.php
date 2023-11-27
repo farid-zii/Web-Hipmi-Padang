@@ -34,7 +34,7 @@
 					</li>
 					<li class="">
 						<a href="/dashboard/pesan" class="dropdown-toggle no-arrow">
-							<span class="micon dw  bi-messeger-fill"></span><span class="mtext">Pesan</span>
+							<span class="micon dw bi-mailbox-flag"></span><span class="mtext">Pesan</span>
 						</a>
 					</li>
 					<li class="">
