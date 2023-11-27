@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('namaKegiatan');
             $table->time('jamMulai');
-            $table->time('jamAkhir');
+            $table->string('jamAkhir')->nullable();
             $table->date('tanggalKegiatan');
-            $table->text('tentangKegiatan');
+            $table->text('lokasi');
             $table->text('deskripsiKegiatan');
             $table->timestamps();
         });

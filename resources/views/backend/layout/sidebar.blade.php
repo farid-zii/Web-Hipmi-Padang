@@ -21,7 +21,7 @@
 							<span class="micon dw dw-edit2"></span><span class="mtext active">Master Data</span>
 						</a>
 						<ul class="submenu" {{Request::segment(2)=="jabatan" || Request::segment(2)=="kategori" || Request::segment(2)=="divisi" || Request::segment(2)=="sektor" ? " style=display:block ":''}}>
-							<li><a href="/dashboard/jabatan" class="{{Request::segment(2)=="jabatan" ? 'active' :''}}">Jabatan</a></li>
+							{{-- <li><a href="/dashboard/jabatan" class="{{Request::segment(2)=="jabatan" ? 'active' :''}}">Jabatan</a></li> --}}
 							<li><a href="/dashboard/kategori" class="{{Request::segment(2)=="kategori" ? 'active' :''}}">Kategori</a></li>
 							<li><a href="/dashboard/divisi" class="{{Request::segment(2)=="divisi" ? 'active' :''}}">Divisi</a></li>
 							<li><a href="/dashboard/sektor" class="{{Request::segment(2)=="sektor" ? 'active' :''}}">Sektor</a></li>
@@ -50,6 +50,11 @@
 					<li class="">
 						<a href="/dashboard/anggota" class="dropdown-toggle no-arrow">
 							<span class="micon dw bi-people-fill"></span><span class="mtext">Anggota</span>
+						</a>
+					</li>
+					<li class="">
+						<a href="/dashboard/anggota" class="dropdown-toggle no-arrow">
+							<span class="micon dw bi-shop"></span><span class="mtext">UMKM</span>
 						</a>
 					</li>
 					<li>

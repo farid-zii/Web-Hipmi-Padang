@@ -17,11 +17,18 @@
           <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="about.html">Tentang Kami</a></li>
-              <li><a href="team.html">Kepengurusan</a></li>
               <li><a href="team.html">Anggota</a></li>
               <li class="dropdown"><a href="#"><span>Kepengurusan</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="/kepengurusan">2021 - 2023</a></li>
+                    @php
+                        $kepengurusan = App\models\Kepengurusan::get();
+                    @endphp
+                    @forelse ( $kepengurusan as $data )
+                        <li><a href="/kepengurusan/{{$data->tahunMulai}}">{{$data->tahunMulai .' - '. $data->tahunAkhir}}</a></li>
+                    @empty
+
+                    <li><a href="#">Tidak ada Kepengurusan</a></li>
+                    @endforelse
                 </ul>
               </li>
             </ul>

@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_anggota');
             $table->foreignId('id_sektor');
-            $table->text('gambar_usaha');
+            $table->text('gambar_usaha')->nullable();
+            $table->text('logo')->nullable();
             $table->string('namaUsaha');
             $table->text('lokasi');
-            $table->text('deskripsiUsaha')->nullable();
+            $table->text('deskripsiUsaha');
             $table->timestamps();
         });
     }

@@ -25,13 +25,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontendController::class,'index']);
-Route::get('/kepengurusan', [FrontendController::class,'blog']);
+Route::get('/kepengurusan', [FrontendController::class,'kepengurusan']);
 Route::get('/tentang-kami', [FrontendController::class,'blog']);
 Route::get('/anggota', [FrontendController::class,'blog']);
 Route::get('/berita', [FrontendController::class,'blog']);
 Route::get('/berita/{slug}', [FrontendController::class,'singleBlog']);
 Route::get('/kegiatan', [FrontendController::class,'singleBlog']);
-Route::get('/contact', [FrontendController::class,'singleBlog']);
+Route::get('/contact', [FrontendController::class,'contact']);
 
 route::get('/login',[LoginController::class,'login']);
 route::post('/login',[LoginController::class,'loginAction']);

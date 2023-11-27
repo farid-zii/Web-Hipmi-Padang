@@ -42,11 +42,25 @@ class UsahaController extends Controller
      */
     public function store(Request $request)
     {
+
         $validate = $request->validate([
             'id_anggota'=>'required',
             'id_sektor'=>'required',
+            'namaUsaha'=>'required',
             'lokasi'=>'required',
+            'deskripsiUsaha'=>'required',
         ]);
+
+        if($request->logo){
+            $namaLogo = time().'-'.$request->logo->getOrigiinalClientName();
+            $request->logo->move(public_path('backend/images/logo-umkm'),$namaLogo);
+            $validate['logo']= $namaLogo;
+        }
+
+        Usaha::create($validate);
+
+        return redirect('/dashboard/umkm')->with('success','Data UMKM baru berhasil ditambahkan');
+
     }
 
     /**
@@ -91,6 +105,6 @@ class UsahaController extends Controller
      */
     public function destroy(Usaha $usaha)
     {
-        //
+
     }
 }

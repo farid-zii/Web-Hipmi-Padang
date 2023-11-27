@@ -16,6 +16,12 @@ class FrontendController extends Controller
     public function singleBlog(){
         return view('frontend.berita');
     }
+    public function kepengurusan(){
+        return view('frontend.kepengurusan',);
+    }
+    public function contact(){
+        return view('frontend.contact',);
+    }
 
 
 }

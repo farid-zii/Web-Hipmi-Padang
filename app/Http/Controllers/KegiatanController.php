@@ -39,7 +39,19 @@ class KegiatanController extends Controller
     {
         $validate = $request->validate([
             'namaKegiatan'=>'required',
+            'jamMulai'=>'required',
+            'tanggalKegiatan'=>'required',
+            'lokasi'=>'required',
+            'deskripsiKegiatan'=>'required',
         ]);
+        if($request->jamAkhir){
+            $validate['jamAKhir']=$request->jamAkhir;
+        }else{
+            $validate['jamAKhir']='selesai';
+        }
+
+        Kegiatan::create($validate);
+        return redirect('/dashboard/kegiatan')->with('success','Data Kegiatan Berhasil Ditambahkan');
     }
 
     /**
@@ -59,9 +71,11 @@ class KegiatanController extends Controller
      * @param  \App\Models\Kegiatan  $kegiatan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kegiatan $kegiatan)
+    public function edit($id)
     {
-        //
+        return view('backend.kegiatan.edit',[
+            'data'=>Kegiatan::find($id)
+        ]);
     }
 
     /**
@@ -71,9 +85,23 @@ class KegiatanController extends Controller
      * @param  \App\Models\Kegiatan  $kegiatan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kegiatan $kegiatan)
+    public function update(Request $request, $id)
     {
-        //
+        $validate = $request->validate([
+            'namaKegiatan'=>'required',
+            'jamMulai'=>'required',
+            'tanggalKegiatan'=>'required',
+            'lokasi'=>'required',
+            'deskripsiKegiatan'=>'required',
+        ]);
+        if($request->jamAkhir){
+            $validate['jamAKhir']=$request->jamAkhir;
+        }else{
+            $validate['jamAKhir']='selesai';
+        }
+
+        Kegiatan::find($id)->update($validate);
+        return redirect('/dashboard/kegiatan')->with('success','Data Kegiatan Berhasil Diedit');
     }
 
     /**
@@ -82,8 +110,10 @@ class KegiatanController extends Controller
      * @param  \App\Models\Kegiatan  $kegiatan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kegiatan $kegiatan)
+    public function destroy($id)
     {
-        //
+        Kegiatan::destroy($id);
+
+        return back()->with('success','Data Kegiatan Berhasil Dihapus');
     }
 }
