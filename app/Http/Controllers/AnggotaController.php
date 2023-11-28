@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\AnggotaImport;
 use App\Models\Anggota;
 use App\Models\Divisi;
 use App\Models\Jabatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AnggotaController extends Controller
 {
@@ -149,5 +152,21 @@ class AnggotaController extends Controller
         Anggota::destroy($id);
 
         return back()->with('success','Data Berhasil Dihapus');
+    }
+
+
+    public function import(Request $r){
+
+
+        $file = $r->file('data');
+        $nameFile = $file->getClientOriginalName();
+
+        $path = $file->storeAs('public/data-excel/',$nameFile);
+
+        Excel::import(new AnggotaImport, storage_path('app/public/data-excel/'.$nameFile));
+
+        Storage::delete($path);
+
+        return redirect('/dashboard/anggota')->with('success','Data Berhasil di Import');
     }
 }

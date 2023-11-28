@@ -24,13 +24,9 @@
                             <a class="btn btn-primary no-arrow" href="/dashboard/anggota/create" role="button">
                                 Tambah
                             </a>
-                            {{-- <a class="btn btn-primary no-arrow d-inline" href="/dashboard/anggota/create" role="button">
-                                export
-                            </a> --}}
-                            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConfirmDelete">Launch
-  modal</button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                Tambah --}}
+                            <button type="button" class="btn btn-dark d-inline" data-toggle="modal"
+                                data-target="#exampleModal">
+                                Import Data
                             </button>
                         </div>
                     </div>
@@ -92,6 +88,30 @@
         </div>
         <div class="footer-wrap pd-20 mb-20 card-box">
             &copy; Copyright {{date('Y')}} - <a href="#">Fanda Alfaridzi</a>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Import Data Excel Anggota</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/dashboard/anggota-import" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    @csrf
+                    <input type="file" accept="" name="data" class="form-control" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Tambahkan Data</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

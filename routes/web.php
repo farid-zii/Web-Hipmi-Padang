@@ -47,6 +47,7 @@ route::get('/logout',[LoginController::class,'logout']);
 route::get('/dashboard',[DashboardController::class,'index']);
 // route::resource('/dashboard/jabatan',JabatanController::class);
 route::resource('/dashboard/anggota',AnggotaController::class);
+route::post('/dashboard/anggota-import',[AnggotaController::class,'import']);
 route::resource('/dashboard/kategori',KategoriController::class);
 route::resource('/dashboard/divisi',DivisiController::class);
 route::resource('/dashboard/sektor',SektorController::class);
