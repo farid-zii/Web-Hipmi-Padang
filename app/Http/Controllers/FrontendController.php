@@ -2,20 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
 use App\Models\Berita;
 use App\Models\Kategori;
+use App\Models\Kegiatan;
 use App\Models\Kepengurusan;
 use App\Models\Surat;
+use App\Models\Usaha;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Request as FacadesRequest;
 
 class FrontendController extends Controller
 {
     public function index(){
-        return view('frontend.index');
+        return view('frontend.index',[
+            'berita'=>Berita::get(),
+            'anggota'=>Anggota::get(),
+            'usaha'=>Usaha::get(),
+            'kegiatan'=>Kegiatan::get(),
+        ]
+    );
     }
     public function about(){
-        return view('frontend.tentangKami');
+        return view('frontend.tentangKami',[
+            'berita'=>Berita::get(),
+            'anggota'=>Anggota::get(),
+            'usaha'=>Usaha::get(),
+            'kegiatan'=>Kegiatan::get(),
+        ]);
     }
 
     public function berita(Request $request){
@@ -26,7 +40,7 @@ class FrontendController extends Controller
             ->paginate(3);
         }
         else {
-            $berita = Berita::paginate(2);
+            $berita = Berita::paginate(8);
         }
 
         return view('frontend.berita',[
@@ -58,8 +72,15 @@ class FrontendController extends Controller
         ]);
     }
 
+    public function anggota(){
+        return view('frontend.anggota');
+    }
     public function kegiatan(){
-        return view('frontend.kegiatan');
+
+
+        return view('frontend.kegiatan',[
+            "data"=>Kegiatan::get()
+        ]);
     }
 
     public function kepengurusan($tahun){
@@ -86,5 +107,14 @@ class FrontendController extends Controller
         return back()->with('success','Pesan Berhasil Dikirim');
     }
 
+    public function umkm(){
+        return view('frontend.umkm');
+    }
+    public function umkmDetail($nama){
+
+        return view('frontend.usaha-detail',[
+            'data'=>Usaha::where('namaUSaha',$nama)->first()
+        ]);
+    }
 
 }

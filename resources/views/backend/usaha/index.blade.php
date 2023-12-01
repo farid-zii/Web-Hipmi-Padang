@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="pb-20">
-                    <table class="data-table table stripe hover nowrap">
+                    <table id="myTable" class="data-table table stripe hover nowrap">
                         <thead>
                             <tr>
                                 {{-- <th class="table-plus datatable-nosort">Name</th> --}}

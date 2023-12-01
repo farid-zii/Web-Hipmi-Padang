@@ -16,6 +16,7 @@
 							<span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
 						</a>
 					</li>
+                    @can('super admin')
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle">
 							<span class="micon dw dw-edit2"></span><span class="mtext active">Master Data</span>
@@ -32,11 +33,15 @@
 							<span class="micon dw  bi-person-badge-fill"></span><span class="mtext">User</span>
 						</a>
 					</li>
+                    @endcan
+
+
 					<li class="">
 						<a href="/dashboard/pesan" class="dropdown-toggle no-arrow">
 							<span class="micon dw bi-mailbox-flag"></span><span class="mtext">Pesan</span>
 						</a>
 					</li>
+
 					<li class="">
 						<a href="/dashboard/berita" class="dropdown-toggle no-arrow">
 							<span class="micon dw bi-newspaper"></span><span class="mtext">Berita</span>

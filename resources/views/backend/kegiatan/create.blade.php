@@ -94,12 +94,10 @@
 
                         <div class="form-group">
                             <label>Deskripsi Kegiatan</label>
+                            <textarea id="editor"  name="deskripsiKegiatan" ></textarea>
                             @error('deskripsi')
                                 <div class="form-control-feedback text-danger">{{$message}}</div>
                             @enderror
-                            <textarea id="editor"  name="deskripsiKegiatan"></textarea>
-                            {{-- <input class="form-contro" type="hidden" id="deskripsi" name="deskripsi" value="">
-                            <trix-editor input="deskripsi"></trix-editor> --}}
                         </div>
 
 

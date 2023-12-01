@@ -57,9 +57,13 @@
                                 <td>{{$item->email}}</td>
                                 <td>{{$item->subject}}</td>
                                 <td>
-                                    <a href="/dashboard/pesan/{{$item->id}}/edit" class="btn btn-warning btn-sm"> <i
+                                    {{-- <button ata-toggle="modal" data-target="#data-{{$item->id}}" class="btn btn-warning btn-sm"> <i
                                             class="bi bi-eye-fill" aria-hidden="true"></i>
-                                        Show</a>
+                                        Show</button> --}}
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#data-{{$item->id}}">
+  <i
+                                            class="bi bi-eye-fill" aria-hidden="true"></i>
+</button>
                                     <form method="post" id="myForm" class="d-inline">
                                         @csrf
                                         @method('delete')
@@ -86,6 +90,36 @@
         </div>
     </div>
 </div>
+
+
+@foreach ($data as $item )
+    <div class="modal fade" id="data-{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">PESAN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+            <p class="fw-bold">Nama : {{$item->namaPengirim}}</p>
+            <p class="fw-bold">No HP : {{$item->noHp}}</p>
+            <p class="fw-bold">email : {{$item->email}}</p>
+            <p class="fw-bold">Subject : {{$item->subject}}</p>
+        </div>
+        <hr>
+        <p>{{$item->deskripsi}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
 
 {{-- @livewire('jabatan.create') --}}
 

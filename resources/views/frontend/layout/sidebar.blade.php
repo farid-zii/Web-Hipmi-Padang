@@ -2,7 +2,7 @@
 $kategori = App\models\Kategori::get();
 
 @endphp
-<div class="col-lg-4">
+<div class="col-4">
 
     <div class="sidebar">
 

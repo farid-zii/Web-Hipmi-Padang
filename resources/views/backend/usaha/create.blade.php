@@ -57,6 +57,11 @@
                                 <div class="form-control-feedback text-danger">{{$message}}</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label>Gambar UMKM</label>
+                            <input class="form-control " type="file" name="gambarUsaha" accept="" value="" placeholder="Kesehatan">
+
+                        </div>
 
                         <div class="form-group row">
                             <div class="col-6">
@@ -98,7 +103,7 @@
 
                         <div class="form-group">
                                 <label>Dekripsi Usaha</label>
-                                <textarea  class="form-control @error('deskripsiUsaha')
+                                <textarea   class="form-control @error('deskripsiUsaha')
                                     form-control-danger
                                 @enderror"  name="deskripsiUsaha" value="{{old('deskripsiUsaha')}}" placeholder="Padang" required></textarea>
                                 @error('deskripsiUsaha')
@@ -126,18 +131,18 @@
         </div>
     </div>
 </div>
-@endsection
-{{-- <script>
+<script>
+
     $(document).ready(function () {
+
         $('#divisi').select2({
             placeholder: "Pilih Data",
             width: 'resolve'
         });
-    });
-    $(document).ready(function () {
         $('#anggota').select2({
             placeholder: "Pilih Data",
             width: 'resolve'
         });
     });
-</script> --}}
+</script>
+@endsection

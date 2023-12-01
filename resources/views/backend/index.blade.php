@@ -6,13 +6,13 @@
 			<div class="card-box pd-20 height-100-p mb-30">
 				<div class="row align-items-center">
 					<div class="col-md-4">
-						<img src="vendors/images/banner-img.png" alt="">
+						<img src="{{asset('backend/vendors/images/banner-img.png')}}" alt="">
 					</div>
 					<div class="col-md-8">
 						<h4 class="font-20 weight-500 mb-10 text-capitalize">
-							Welcome back <div class="weight-600 font-30 text-blue">Johnny Brown!</div>
+							Welcome back <div class="weight-600 font-30 text-blue">Admin</div>
 						</h4>
-						<p class="font-18 max-width-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde hic non repellendus debitis iure, doloremque assumenda. Autem modi, corrupti, nobis ea iure fugiat, veniam non quaerat mollitia animi error corporis.</p>
+						{{-- <p class="font-18 max-width-600"><h2>HELLO ADMIN</h2></p> --}}
 					</div>
 				</div>
 			</div>
@@ -25,8 +25,8 @@
                                 <i class="bi bi-people-fill"></i>
 							</div>
 							<div class="widget-data">
-								<div class="h4 mb-0">2020</div>
-								<div class="weight-600 font-14">Contact</div>
+								<div class="h4 mb-0">{{$anggota->count()}}</div>
+								<div class="weight-600 font-14">Anggota</div>
 							</div>
 						</div>
 					</div>
@@ -38,7 +38,7 @@
 								<i class="bi bi-newspaper"></i>
 							</div>
 							<div class="widget-data">
-								<div class="h4 mb-0">2020</div>
+								<div class="h4 mb-0">{{$berita->count()}}</div>
 								<div class="weight-600 font-14">Berita</div>
 							</div>
 						</div>
@@ -51,7 +51,7 @@
 								<i class="bi bi-calendar-event-fill"></i>
 							</div>
 							<div class="widget-data">
-								<div class="h4 mb-0">2020</div>
+								<div class="h4 mb-0">{{$kegiatan->count()}}</div>
 								<div class="weight-600 font-14">Event</div>
 							</div>
 						</div>
@@ -64,14 +64,14 @@
 								<i class="bi bi-building-fill"></i>
 							</div>
 							<div class="widget-data">
-								<div class="h4 mb-0">2020</div>
+								<div class="h4 mb-0">{{$usaha->count()}}</div>
 								<div class="weight-600 font-14">Usaha</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row">
+			{{-- <div class="row">
 				<div class="col-xl-8 mb-30">
 					<div class="card-box height-100-p pd-20">
 						<h2 class="h4 mb-20">Activity</h2>
@@ -84,7 +84,7 @@
 						<div id="chart6"></div>
 					</div>
 				</div>
-			</div>
+			</div> --}}
 			{{-- <div class="card-box mb-30">
 				<h2 class="h4 pd-20">Best Selling Products</h2>
 				<table class="data-table table nowrap">

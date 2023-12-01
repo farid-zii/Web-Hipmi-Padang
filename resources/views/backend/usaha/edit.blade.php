@@ -58,6 +58,12 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <label>Gambar UMKM</label>
+                            <input class="form-control " type="file" name="gambarUsaha" accept="" value="" placeholder="Kesehatan">
+
+                        </div>
+
                         <div class="form-group row">
                             <div class="col-6">
                                 <label>Pemilik</label>

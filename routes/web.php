@@ -31,12 +31,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class,'index']);
 Route::get('/kepengurusan/{tahun}', [FrontendController::class,'kepengurusan']);
 Route::get('/tentang-kami', [FrontendController::class,'about']);
-Route::get('/anggota', [FrontendController::class,'blog']);
+Route::get('/anggota', [FrontendController::class,'anggota']);
 Route::get('/berita', [FrontendController::class,'berita']);
 Route::get('/berita/{kategori}', [FrontendController::class,'beritaKategori']);
 Route::get('/berita/blog/{slug}', [FrontendController::class,'singleBlog']);
 Route::get('/kegiatan', [FrontendController::class,'kegiatan']);
 Route::get('/contact', [FrontendController::class,'contact']);
+Route::get('/umkm', [FrontendController::class,'umkm']);
+Route::get('/umkm/{nama}', [FrontendController::class,'umkmDetail']);
 Route::post('/contact', [FrontendController::class,'contactStore']);
 
 route::get('/login',[LoginController::class,'login']);

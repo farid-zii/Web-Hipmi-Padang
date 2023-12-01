@@ -8,23 +8,26 @@
             <div class="container">
                 <div class="breadcrumb-hero">
                     <h2>KEPENGURUSAN</h2>
-                    <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia
+                    {{-- <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia
                         voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum
-                        praesentium. </p>
+                        praesentium. </p> --}}
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <ol>
-                <li><a href="/">Home</a></li>
-                <li>Kepengurusan {{$data->tahunMulai .' - '. $data->tahunAkhir}}</li>
-            </ol>
         </div>
     </section><!-- End Breadcrumbs -->
 
     <!-- ======= Team Section ======= -->
     <section id="team" class="team">
-        <div class="container">
+        <div class="container mt-3">
+
+            <div class="text-center fw-bold my-4" style="font-size: 30px">
+
+                KEPENGURUSAN<br>
+                HIPMI PADANG<br>
+                PERIODE<br>
+                {{$data->tahunMulai .' - '. $data->tahunAkhir}}
+
+            </div>
 
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
@@ -335,7 +338,7 @@
                         </div>
                         <div class="member-info text-center">
                             <h4>{{$data->kbid_1->nama}}</h4>
-                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 1 organisasi, keanggotaan dan kelembagaan</span>
+                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 1 Organisasi, Keanggotaan dan Kelembagaan</span>
                         </div>
                     </div>
                 </div>
@@ -352,7 +355,7 @@
                         </div>
                         <div class="member-info text-center">
                             <h4>{{$data->kbid_2->nama}}</h4>
-                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 2 Keuangan dan perbankan</span>
+                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 2 Keuangan dan Perbankan</span>
                         </div>
                     </div>
                 </div>
@@ -369,7 +372,7 @@
                         </div>
                         <div class="member-info text-center">
                             <h4>{{$data->kbid_3->nama}}</h4>
-                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 3 Perdagangan perindustrian dan ESDM</span>
+                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 3 Perdagangan Perindustrian dan ESDM</span>
                         </div>
                     </div>
                 </div>
@@ -403,7 +406,7 @@
                         </div>
                         <div class="member-info text-center">
                             <h4>{{$data->kbid_5->nama}}</h4>
-                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 5 kemaritiman, pertanian, kehutanan, dan lingkungan hidup</span>
+                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 5 Kemaritiman, Pertanian, Kehutanan, dan Lingkungan Hidup</span>
                         </div>
                     </div>
                 </div>
@@ -423,7 +426,7 @@
                         </div>
                         <div class="member-info text-center">
                             <h4>{{$data->kbid_6->nama}}</h4>
-                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 6 pariwisata, ekonomi kreatif, koperasi dan UMKM</span>
+                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 6 Pariwisata, Ekonomi Kreatif, Koperasi dan UMKM</span>
                         </div>
                     </div>
                 </div>
@@ -440,7 +443,7 @@
                         </div>
                         <div class="member-info text-center">
                             <h4>{{$data->kbid_7->nama}}</h4>
-                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 7 investasi, infokom, dan kerjsama internasiona</span>
+                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 7 Investasi, Infokom, dan Kerjsama Internasional</span>
                         </div>
                     </div>
                 </div>
@@ -457,7 +460,7 @@
                         </div>
                         <div class="member-info text-center">
                             <h4>{{$data->kbid_8->nama}}</h4>
-                            <span class="" style="font-weight: bolder;color:gray">Ketua bidang 8 tata ruang, pu dan pembangunan desa</span>
+                            <span class="" style="font-weight: bolder;color:gray">Ketua bidang 8 Tata Ruang, PU dan Pembangunan Desa</span>
                         </div>
                     </div>
                 </div>
@@ -474,7 +477,7 @@
                         </div>
                         <div class="member-info text-center">
                             <h4>{{$data->kbid_9->nama}}</h4>
-                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 9 ketenagakerjaan, vokasi dan kesehatan</span>
+                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 9 Ketenagakerjaan, Vokasi dan Kesehatan</span>
                         </div>
                     </div>
                 </div>
@@ -491,7 +494,7 @@
                         </div>
                         <div class="member-info text-center">
                             <h4>{{$data->kbid_10->nama}}</h4>
-                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 10 Pendidikan riset, sosial, pemuda dan olahraga</span>
+                            <span class="" style="font-weight: bolder;color:gray">ketua bidang 10 Pendidikan Riset, Sosial, Pemuda dan Olahraga</span>
                         </div>
                     </div>
                 </div>

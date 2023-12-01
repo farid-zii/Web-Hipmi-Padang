@@ -17,6 +17,7 @@ class AnggotaFactory extends Factory
     public function definition()
     {
         return [
+            'idDivisi'=>mt_rand(1,10),
             'nama'=>$this->faker->name(),
             'email'=>fake()->email(),
             'alamat'=>fake()->address(),
@@ -25,7 +26,7 @@ class AnggotaFactory extends Factory
             'tempatLahir'=>fake()->cityPrefix(),
             'tanggalLahir'=>fake()->date(),
             'motto'=>fake()->words(10,true),
-            'foto'=>'foto.jpg',
+            'foto'=>fake()->randomElement(['foto.jpg','foto2.jpg','foto3.jpg']),
         ];
     }
 }
